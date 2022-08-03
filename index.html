@@ -1,5 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head></head>
-  <body></body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="discription" content="One Page Todo Web Application" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <header id="mainHeader"></header>
+    <main>
+      <form action="" id="newTodoForm">
+        <div class="inputContainer">
+          <label for="newTodoInput">New Todo:</label>
+          <input type="text" id="newTodoInput" name="newTodo" />
+        </div>
+        <button type="button" class="addButton">Add</button>
+      </form>
+      <ul>
+        <li>
+          <form action="">
+            <label for="edit">Edit:</label>
+            <input type="text" id="edit" name="edit" />
+            <input type="submit" value="Save" />
+          </form>
+        </li>
+        <li>
+          <input type="checkbox" id="todo1" name="todo1" value="" />
+          <label for="todo1">Vacuum the carpet</label>
+          <button type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+              />
+            </svg>
+          </button>
+          <button type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"
+              />
+            </svg>
+          </button>
+        </li>
+        <li>
+          <input type="checkbox" id="todo2" name="todo2" value="" />
+          <label for="todo2">Sweep</label>
+          <button type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+              />
+            </svg>
+          </button>
+          <button type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"
+              />
+            </svg>
+          </button>
+        </li>
+        <li>
+          <input type="checkbox" id="todo3" name="todo3" value="" />
+          <label for="todo3">Wash the dishes</label>
+          <button type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+              />
+            </svg>
+          </button>
+          <button type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            >
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"
+              />
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </main>
+  </body>
 </html>

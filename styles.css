@@ -1,0 +1,79 @@
+:root {
+  --green: #97c29c;
+  --green-grey: #575951;
+  --white: #f6faf5;
+  --grey: #b1b3b1;
+  --light-grey: #dcdedc;
+  --light-green-grey: #9ba990;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Verdana, sans-serif;
+}
+#mainHeader {
+  height: 120px;
+  background-color: var(--green);
+}
+main {
+  max-width: 600px;
+  margin: 0 auto;
+}
+#newTodoForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: -50px;
+  margin-bottom: 40px;
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: 3px;
+  box-shadow: 5px 5px 10px var(--grey);
+}
+.inputContainer {
+  width: 100%;
+}
+.inputContainer > label {
+  color: var(--green-grey);
+}
+#newTodoInput {
+  margin-top: 10px;
+  max-width: 450px;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--light-grey);
+  border-radius: 3px;
+}
+#newTodoInput:focus {
+  outline: none;
+  border: 2px solid var(--light-green-grey);
+}
+.addButton {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  background-color: var(--green);
+  color: var(--white);
+  cursor: pointer;
+}
+.addButton:hover {
+  box-shadow: 1px 1px 5px var(--grey);
+  background-color: var(--light-green-grey);
+  transition-duration: 0.2s;
+}
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+  border: 2px solid var(--light-grey);
+  border-radius: 2px;
+  background-color: var(--white);
+}
+ul > li {
+  border-bottom: 2px solid var(--light-grey);
+}
+ul > li:last-child {
+  border-bottom: none;
+}
