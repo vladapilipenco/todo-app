@@ -1,20 +1,37 @@
 :root {
   /*Colors*/
   --green-color: #97c29c;
+  --green-grey-color: #c5d1bf;
   --light-green-white-color: #f6faf5;
 
   /*Element Colors*/
   --main-header-color: var(--green-color);
-  --shadow-color: #b1b3b1;
-  --border-color: #dcdedc;
-  --primary-button-background: var(--green-color);
-  --primary-button-hover: #9ba990;
-  --primary-button-text: var(--light-green-white-color);
   --primary-background-color: var(--light-green-white-color);
+  --shadow-color: #d8dcd8;
+  --border-color: #dcdedc;
   --label-color: #575951;
+  --input-hover-color: var(--green-grey-color);
+  --checkmark-background-color: #dde5de;
+  --checkmark-hover-background: #c8d4ca;
+  --primary-button-background: var(--green-color);
+  --primary-button-hover: var(--green-grey-color);
+  --primary-button-text: var(--light-green-white-color);
+  --action-button-background: var(--light-green-white-color);
+  --action-button-color: var(--green-color);
+  --action-button-hover: var(--green-grey-color);
+  --button-active-state-color: #3f473c;
 
-  /*Margins*/
-  --margin-between-elements: 20px;
+  /*Spacing*/
+  --spacing-01: 4px;
+  --spacing-02: 8px;
+  --spacing-03: 16px;
+  --spacing-04: 24px;
+  --spacing-05: 32px;
+  --spacing-06: 48px;
+  --spacing-07: 56px;
+  --spacing-08: 64px;
+  --spacing-09: 80px;
+  --spacing-10: 96px;
 }
 
 * {
@@ -36,41 +53,41 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: -50px;
-  margin-bottom: 40px;
+  margin-top: calc(-1 * var(--spacing-07));
+  margin-bottom: var(--spacing-06);
   background-color: var(--primary-background-color);
-  padding: 30px;
+  padding: var(--spacing-05);
   border-radius: 3px;
-  box-shadow: 5px 5px 10px var(--shadow-color);
+  box-shadow: 1px 10px 15px var(--shadow-color);
 }
 #newTodoForm > label {
   width: 100%;
   color: var(--label-color);
 }
 #newTodoInput {
-  margin-top: 10px;
+  margin-top: var(--spacing-02);
   width: 100%;
-  padding: 10px;
+  padding: var(--spacing-02);
   border: 2px solid var(--border-color);
   border-radius: 3px;
 }
 #newTodoInput:focus,
 #editTodoInput:focus {
   outline: none;
-  border: 2px solid var(--primary-button-hover);
+  border: 2px solid var(--input-hover-color);
 }
 .addNewTodoButton {
-  margin-left: 15px;
-  padding: 12px 25px;
-  border: none;
+  margin-left: var(--spacing-03);
+  padding: var(--spacing-02) var(--spacing-04);
+  border: 2px solid transparent;
   border-radius: 3px;
-  text-align: center;
   background-color: var(--primary-button-background);
   color: var(--primary-button-text);
   cursor: pointer;
 }
-.addNewTodoButton:hover {
-  box-shadow: 1px 1px 5px var(--shadow-color);
+.addNewTodoButton:hover,
+.addNewTodoButton:focus {
+  box-shadow: 3px 3px 5px var(--shadow-color);
   background-color: var(--primary-button-hover);
   transition-duration: 0.2s;
 }
@@ -91,28 +108,127 @@ ul > li:last-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  column-gap: 15px;
-  padding: 15px;
+  column-gap: var(--spacing-03);
+  padding: var(--spacing-03);
 }
 #editTodoForm > label {
   color: var(--label-color);
 }
 #editTodoInput {
   width: 100%;
-  padding: 10px;
+  padding: var(--spacing-02);
   border: 2px solid var(--border-color);
   border-radius: 3px;
 }
 .saveButton {
-  padding: 10px 16px;
+  padding: var(--spacing-02) var(--spacing-03);
   border: 2px solid var(--primary-button-background);
   border-radius: 3px;
   color: var(--green-color);
   background-color: var(--primary-background-color);
+  cursor: pointer;
+}
+.saveButton:hover,
+.saveButton:focus {
+  border-color: var(--primary-button-hover);
+  background-color: var(--primary-button-hover);
+  color: var(--primary-button-text);
+  box-shadow: 3px 3px 5px var(--shadow-color);
+  transition-duration: 0.2s;
 }
 .todoItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: var(--spacing-03);
+  gap: var(--spacing-02);
+}
+.todoItem > label {
+  display: flex;
+  align-items: center;
+  column-gap: var(--spacing-02);
+  word-break: break-word;
+}
+.todoItem input[type="checkbox"]:checked ~ .checkmark + .title {
+  text-decoration: line-through;
+  text-decoration-thickness: 6px;
+  text-decoration-color: #cbeccfb5;
+}
+.checkboxContainer {
+  position: relative;
+  cursor: pointer;
+  padding-left: var(--spacing-05);
+}
+.checkboxContainer input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: var(--checkmark-background-color);
+  border-radius: 3px;
+}
+.checkboxContainer:hover input ~ .checkmark {
+  background-color: var(--checkmark-hover-background);
+}
+.checkboxContainer input:focus-visible ~ .checkmark {
+  outline: -webkit-focus-ring-color auto 1px; /*Default outline for the accessibility*/
+}
+.checkboxContainer input:checked ~ .checkmark {
+  background-color: #cbeccfb7;
+}
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkboxContainer input:checked ~ .checkmark::after {
+  display: block;
+}
+.checkboxContainer .checkmark::after {
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.buttonsContainer {
+  flex-shrink: 0;
+}
+.actionButton {
+  border: none;
+  background-color: var(--action-button-background);
+  cursor: pointer;
+}
+.svgIcon {
+  fill: var(--action-button-color);
+}
+.actionButton:hover .svgIcon,
+.actionButton:focus .svgIcon {
+  fill: var(--action-button-hover);
+  filter: drop-shadow(2px 3px 1px var(--shadow-color));
+  transition-duration: 0.2s;
+}
+
+.addNewTodoButton:active,
+.saveButton:active {
+  background-color: var(--button-active-state-color);
+  border: 2px solid transparent;
+}
+.actionButton:active .svgIcon {
+  fill: var(--button-active-state-color);
+}
+@media screen and (max-width: 650px) {
+  main {
+    margin: 0 20px;
+  }
 }
