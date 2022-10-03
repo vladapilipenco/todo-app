@@ -1,7 +1,7 @@
 :root {
   /*Colors*/
-  --green-color: #97c29c;
-  --green-grey-color: #c5d1bf;
+  --green-color: #9fc9a7;
+  --green-grey-color: #b8c3b2;
   --light-green-white-color: #f6faf5;
 
   /*Element Colors*/
@@ -100,6 +100,7 @@ ul {
 }
 ul > li {
   border-bottom: 2px solid var(--border-color);
+  user-select: none;
 }
 ul > li:last-child {
   border-bottom: none;
