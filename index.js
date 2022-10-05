@@ -20,3 +20,9 @@ newTodoForm.addEventListener("submit", function (event) {
     currentForm.reset();
   }
 });
+const newTodoInput = document.getElementById("newTodoInput");
+newTodoInput.addEventListener("input", function (event) {
+  if (newTodoForm.classList.contains("newTodoFormError")) {
+    newTodoForm.classList.remove("newTodoFormError");
+  }
+});
