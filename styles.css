@@ -20,6 +20,7 @@
   --action-button-color: var(--green-color);
   --action-button-hover: var(--green-grey-color);
   --button-active-state-color: #3f473c;
+  --error-color: #f15757;
 
   /*Spacing*/
   --spacing-01: 4px;
@@ -227,6 +228,18 @@ ul > li:last-child {
 }
 .actionButton:active .svgIcon {
   fill: var(--button-active-state-color);
+}
+.newTodoError {
+  display: none;
+  color: var(--error-color);
+  font-size: 12px;
+  margin: 0;
+}
+.newTodoFormError .newTodoError {
+  display: block;
+}
+.newTodoFormError .addNewTodoButton {
+  margin-bottom: 14px;
 }
 @media screen and (max-width: 650px) {
   main {

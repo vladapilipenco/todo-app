@@ -7,8 +7,16 @@ newTodoForm.addEventListener("submit", function (event) {
   const currentForm = event.target;
   const formData = new FormData(currentForm);
 
-  todoList.push(formData.get("newTodo"));
-  console.log(todoList);
+  const todo = formData.get("newTodo").trim();
 
-  currentForm.reset();
+  if (todo == "") {
+    currentForm.classList.add("newTodoFormError");
+  } else {
+    currentForm.classList.remove("newTodoFormError");
+    todoList.push(todo);
+
+    console.log(todoList);
+
+    currentForm.reset();
+  }
 });
