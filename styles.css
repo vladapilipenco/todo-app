@@ -99,6 +99,9 @@ ul {
   border-radius: 3px;
   background-color: var(--primary-background-color);
 }
+ul:empty {
+  border: none;
+}
 ul > li {
   border-bottom: 2px solid var(--border-color);
   user-select: none;
@@ -237,9 +240,11 @@ ul > li:last-child {
 }
 .newTodoFormError .newTodoError {
   display: block;
+  transition-duration: 0s;
 }
 .newTodoFormError .addNewTodoButton {
   margin-bottom: 14px;
+  transition-duration: 0s;
 }
 @media screen and (max-width: 650px) {
   main {
