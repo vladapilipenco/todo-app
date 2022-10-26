@@ -1,5 +1,4 @@
-const todoList = [];
-displayTodoList();
+let todoList = [];
 
 const newTodoForm = document.getElementById("newTodoForm");
 newTodoForm.addEventListener("submit", function (event) {
@@ -14,13 +13,22 @@ newTodoForm.addEventListener("submit", function (event) {
     currentForm.classList.add("newTodoFormError");
   } else {
     currentForm.classList.remove("newTodoFormError");
-    todoList.push(todo);
+    if (
+      todoList.find(function (currentTodo) {
+        return currentTodo == todo;
+      })
+    ) {
+      alert("This todo already exists");
+    } else {
+      todoList.push(todo);
 
-    displayTodoList();
+      createTodoItem(todo, todoList.length - 1);
 
-    currentForm.reset();
+      currentForm.reset();
+    }
   }
 });
+
 const newTodoInput = document.getElementById("newTodoInput");
 newTodoInput.addEventListener("input", function (event) {
   if (newTodoForm.classList.contains("newTodoFormError")) {
@@ -28,19 +36,20 @@ newTodoInput.addEventListener("input", function (event) {
   }
 });
 
+const listElement = document.querySelector("ul");
 function displayTodoList() {
-  const listElement = document.querySelector("ul");
-  while (listElement.firstChild) {
-    listElement.removeChild(listElement.firstChild);
-  }
-
   todoList.forEach(function (todo, index) {
-    const li = document.createElement("li");
-    li.classList.add("todoItem");
+    createTodoItem(todo, index);
+  });
+}
 
-    const id = "todo" + index + 1;
+function createTodoItem(todo, index) {
+  const li = document.createElement("li");
+  li.classList.add("todoItem");
 
-    li.innerHTML = `
+  const id = "todo" + (index + 1);
+
+  li.innerHTML = `
         <label for="${id}" class="checkboxContainer">
             <input type="checkbox" id="${id}" name="${id}" value="" />
             <span class="checkmark"></span>
@@ -77,6 +86,22 @@ function displayTodoList() {
             </button>
           </div>
     `;
-    listElement.appendChild(li);
+  listElement.appendChild(li);
+
+  const actionButtons = li.querySelectorAll(".actionButton");
+  const editTodoItemButton = actionButtons[0];
+  editTodoItemButton.addEventListener("click", function (event) {
+    // const editForm = document.querySelector("#editTodoForm");
+    console.log(id);
+  });
+
+  const deleteTodoItemButton = actionButtons[1];
+  deleteTodoItemButton.addEventListener("click", function (event) {
+    todoList = todoList.filter(function (currentTodo) {
+      return currentTodo != todo;
+    });
+    listElement.removeChild(li);
   });
 }
+
+displayTodoList();
