@@ -119,6 +119,13 @@ ul > li:last-child {
 #editTodoForm > label {
   color: var(--label-color);
 }
+.todoItem #editTodoForm {
+  display: none;
+}
+.editTodoItem .checkboxContainer,
+.editTodoItem .buttonsContainer {
+  display: none;
+}
 #editTodoInput {
   width: 100%;
   padding: var(--spacing-02);
@@ -246,6 +253,7 @@ ul > li:last-child {
   margin-bottom: 14px;
   transition-duration: 0s;
 }
+
 @media screen and (max-width: 650px) {
   main {
     margin: 0 20px;
