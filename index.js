@@ -15,14 +15,16 @@ newTodoForm.addEventListener("submit", function (event) {
     currentForm.classList.remove("newTodoFormError");
     if (
       todoList.find(function (currentTodo) {
-        return currentTodo == todo;
+        return currentTodo.title == todo;
       })
     ) {
       alert("This todo already exists");
     } else {
-      todoList.push(todo);
+      const newTodoItem = { title: todo, status: "new" };
 
-      createTodoItem(todo, todoList.length - 1);
+      todoList.push(newTodoItem);
+
+      createTodoItem(newTodoItem, todoList.length);
 
       currentForm.reset();
     }
@@ -47,13 +49,15 @@ function createTodoItem(todo, index) {
   const li = document.createElement("li");
   li.classList.add("todoItem");
 
-  const id = "todo" + (index + 1);
+  const id = "todo" + index;
 
   li.innerHTML = `
         <label for="${id}" class="checkboxContainer">
-            <input type="checkbox" id="${id}" name="${id}" value="" />
+            <input type="checkbox" id="${id}" name="${id}" ${
+    todo.status == "new" ? "" : "checked"
+  } />
             <span class="checkmark"></span>
-            <span class="title">${todo}</span>
+            <span class="title">${todo.title}</span>
         </label>
         <div class="buttonsContainer">
         <button type="button" class="actionButton">
@@ -87,13 +91,29 @@ function createTodoItem(todo, index) {
         </div>
         <form action="" id="editTodoForm">
             <label for="editTodoInput">Edit:</label>
-            <input type="text" id="editTodoInput" name="editTodo" value="${todo}" />
+            <input type="text" id="editTodoInput" name="editTodo" value="${
+              todo.title
+            }" />
             <button class="saveButton">Save</button>
         </form>
     `;
+
   listElement.appendChild(li);
 
+  const checkboxStatus = li.querySelector("#" + id);
+  checkboxStatus.addEventListener("change", function (event) {
+    const status = event.target.checked ? "done" : "new";
+    todoList = todoList.map(function (currentTodo) {
+      if (todo.title == currentTodo.title) {
+        return { title: currentTodo.title, status: status };
+      } else {
+        return currentTodo;
+      }
+    });
+  });
+
   const actionButtons = li.querySelectorAll(".actionButton");
+
   const editTodoItemButton = actionButtons[0];
   editTodoItemButton.addEventListener("click", function (event) {
     li.classList.remove("todoItem");
@@ -110,8 +130,8 @@ function createTodoItem(todo, index) {
         alert("This field should not be empty");
       } else {
         todoList = todoList.map(function (currentTodo) {
-          if (currentTodo == todo) {
-            return newTodo;
+          if (currentTodo.title == todo.title) {
+            return { title: newTodo, status: currentTodo.status };
           } else {
             return currentTodo;
           }
@@ -129,7 +149,7 @@ function createTodoItem(todo, index) {
   const deleteTodoItemButton = actionButtons[1];
   deleteTodoItemButton.addEventListener("click", function (event) {
     todoList = todoList.filter(function (currentTodo) {
-      return currentTodo != todo;
+      return currentTodo.title != todo.title;
     });
     listElement.removeChild(li);
   });
