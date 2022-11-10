@@ -31,7 +31,7 @@ newTodoForm.addEventListener("submit", function (event) {
     ) {
       alert("This todo already exists");
     } else {
-      const newTodoItem = { title: todo, status: "new" };
+      const newTodoItem = { id: Date.now(), title: todo, status: "new" };
 
       todoList.push(newTodoItem);
 
@@ -54,7 +54,7 @@ function createTodoItem(todo) {
   const li = document.createElement("li");
   li.classList.add("todoItem");
 
-  const id = "todo" + todoList.length;
+  const id = "todo" + todo.id;
 
   li.innerHTML = `
         <label for="${id}" class="checkboxContainer">
@@ -109,8 +109,8 @@ function createTodoItem(todo) {
   checkboxStatus.addEventListener("change", function (event) {
     const status = event.target.checked ? "done" : "new";
     todoList = todoList.map(function (currentTodo) {
-      if (todo.title == currentTodo.title) {
-        return { title: currentTodo.title, status: status };
+      if (todo.id == currentTodo.id) {
+        return { ...currentTodo, status: status };
       } else {
         return currentTodo;
       }
@@ -129,7 +129,7 @@ function createTodoItem(todo) {
   const deleteTodoItemButton = actionButtons[1];
   deleteTodoItemButton.addEventListener("click", function (event) {
     todoList = todoList.filter(function (currentTodo) {
-      return currentTodo.title != todo.title;
+      return currentTodo.id != todo.id;
     });
     listElement.removeChild(li);
     localStorage.setItem("todos", JSON.stringify(todoList));
@@ -147,8 +147,8 @@ function createTodoItem(todo) {
       alert("This field should not be empty");
     } else {
       todoList = todoList.map(function (currentTodo) {
-        if (currentTodo.title == todo.title) {
-          return { title: newTodo, status: currentTodo.status };
+        if (currentTodo.id == todo.id) {
+          return { ...currentTodo, title: newTodo };
         } else {
           return currentTodo;
         }
