@@ -132,7 +132,7 @@ function createTodoItem(todo) {
       return currentTodo.id != todo.id;
     });
     listElement.removeChild(li);
-    localStorage.setItem("todos", JSON.stringify(todoList));
+    localStorage.setItem(TODO_STORAGE_KEY, JSON.stringify(todoList));
   });
 
   const editTodoForm = li.querySelector("#editTodoForm");
