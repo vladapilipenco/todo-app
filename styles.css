@@ -1,8 +1,8 @@
 :root {
   /*Colors*/
-  --green-color: #9fc9a7;
-  --green-grey-color: #b8c3b2;
-  --light-green-white-color: #f6faf5;
+  --green-color: #5c979e;
+  --green-grey-color: #b2c1c3;
+  --light-green-white-color: #fafefe;
 
   /*Element Colors*/
   --main-header-color: var(--green-color);
@@ -43,8 +43,10 @@ body {
   font-family: Verdana, sans-serif;
 }
 header {
-  height: 120px;
+  height: 140px;
+  background-image: url("Meet-The-Team-Header-Background.png");
   background-color: var(--main-header-color);
+  background-size: cover;
 }
 main {
   max-width: 650px;
